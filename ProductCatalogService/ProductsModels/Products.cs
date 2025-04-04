@@ -1,10 +1,13 @@
-﻿using System.ComponentModel;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
-namespace ProductCatalogService
+namespace ProductCatalogService.ProductsModels
 {
-    public class product
+    public class Products
     {
-        public int Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }

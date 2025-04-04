@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductCatalogService.Services;
 
 namespace ProductCatalogService.Controllers
 {
@@ -6,6 +7,13 @@ namespace ProductCatalogService.Controllers
     [Route("[Controller")]
     public class ProductConnectServerController : Controller
     {
+        private readonly ProductsService _productsService;
+
+        public ProductConnectServerController(ProductsService productsService)
+        {
+            _productsService = productsService;
+        }
+
         [HttpGet("/api/products")]
         public IActionResult GetAllProducts()
         {
