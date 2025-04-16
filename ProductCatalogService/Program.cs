@@ -10,12 +10,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<ProductsDatabaseSettings>(
-    builder.Configuration.GetSection("ProductsDatabase"));
+    builder.Configuration.GetSection("ProductsDatabaseSettings"));
 
 builder.Services.AddSingleton<ProductsService>();
+builder.Services.AddControllers();
 var app = builder.Build();
 
+app.UseStaticFiles();
+app.UseRouting();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Products}/{action=Index}/{id?}");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

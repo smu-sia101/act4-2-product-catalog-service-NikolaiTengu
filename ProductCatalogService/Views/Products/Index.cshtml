@@ -1,0 +1,35 @@
+﻿@model List<ProductCatalogService.ProductsModels.Products>
+
+<h1>Product Catalog</h1>
+
+<p>
+    <a href="/Products/Create" class="btn btn-primary">Add New Product</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>$@product.Price</td>
+                <td>@product.Category</td>
+                <td>@product.Stock</td>
+                <td>
+                    <a href="/Products/Edit/@product.Id">Edit</a> |
+                    <a href="/Products/Details/@product.Id">Details</a> |
+                    <a href="/Products/Delete/@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
