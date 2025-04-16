@@ -13,7 +13,7 @@ builder.Services.Configure<ProductsDatabaseSettings>(
     builder.Configuration.GetSection("ProductsDatabaseSettings"));
 
 builder.Services.AddSingleton<ProductsService>();
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 app.UseStaticFiles();
